@@ -302,6 +302,7 @@ class ApiManager {
 
   static Future<DoctorAuthModel> deleteAccount(
     String role,
+
   ) async {
     dio.interceptors.add(LogInterceptor(
       responseBody: true,
@@ -467,4 +468,49 @@ class ApiManager {
     );
     return DoctorAuthModel.fromJson(response.data);
   }
+  ////////////location /////////////////////////////
+
+  static Future<dynamic> maps(
+      String roleMaps,
+      String lat,  String lng) async {
+    dio.interceptors.add(LogInterceptor(
+      responseBody: true,
+      requestBody: true,
+      requestHeader: true,
+      responseHeader: true,
+    ));
+    try {
+      var prefs = await SharedPreferences.getInstance();
+      var token = prefs.getString('token');
+      var response = await dio.post(
+        roleMaps,
+        data: {
+          'lat': lat,
+          'lng': lng,
+        },
+        options: Options(
+          headers: {
+            'Authorization': 'Hamada__$token',
+          },
+          validateStatus: (status) => true,
+        ),
+      );
+      var prefss = await SharedPreferences.getInstance();
+      prefs.setString('token', response.data['access_Token']);
+      if (roleMaps == '$baseUrl/patient/sendLocation') {
+        return DoctorAuthModel.fromJson(response.data);
+      // } else if (role == '/patient/loginPatient') {
+      //   return PatientAuthModel.fromJson(response.data);
+      // } else {
+      //   return GuardianAuthModel.fromJson(response.data);
+      // }
+
+    }
+
+  }
+    catch (e) {
+      print('==================');
+      print(e);
+    }
+}
 }

@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         loginScreen2.routeName: (_) => loginScreen2(),
         loginScreen3.routeName: (_) => loginScreen3(),
         LoginDoctor.routeName: (_) => LoginDoctor(),
-        LoginGuardian.routeName:(_) => LoginGuardian(),
+        LoginGuardian.routeName: (_) => LoginGuardian(),
         login_patient_guardian.routeName: (_) => login_patient_guardian(),
         login_patient_guardian_rest.routeName: (_) =>
             login_patient_guardian_rest(),
@@ -90,18 +90,20 @@ class MyApp extends StatelessWidget {
         PatientInfo.routeName: (_) => PatientInfo(),
         HeartRateScreen.routeName: (_) => HeartRateScreen(),
         MotionRateScreen.routeName: (_) => MotionRateScreen(),
-        HistoryScreen.routeName : (_) => HistoryScreen(),
+        HistoryScreen.routeName: (_) => HistoryScreen(),
         PatientDetails.routeName: (context) {
 // Dr
-          //ahmedabonashy526@gmail.com
-          //Ahmed@123
+            //islam225@gmail.com
+          //Arwa@123
           // patient
+          //  arwaadel3553@gmail.com
+          // Arwa@123
           //
           // Arwa@123alaaali@gmail.com
           return PatientDetails();
         },
       },
-      initialRoute: SplashScreen.routeName,
+      initialRoute: MapSample.routeName,
     );
   }
 }
